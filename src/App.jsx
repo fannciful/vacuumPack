@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
-import About from './pages/About';
 import Contact from './pages/Contact';
 import Catalog from './pages/Catalog';
 
-// Компонент для автоматичного прокручування на початок сторінки
+// Component for automatic scrolling to top of page
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
@@ -23,7 +22,6 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/catalog" element={<Catalog />} />
         </Routes>

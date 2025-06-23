@@ -32,13 +32,13 @@ const Contact = () => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Імітація відправки форми
+    // Form submission simulation
     setTimeout(() => {
       console.log('Form submitted:', formData);
       setIsLoading(false);
       setIsSubmitted(true);
       
-      // Скидання форми та повідомлення через 3 секунди
+      // Reset form and message after 3 seconds
       setTimeout(() => {
         setIsSubmitted(false);
         setFormData({
@@ -54,19 +54,19 @@ const Contact = () => {
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Телефон",
-      details: ["+38 (067) 123-45-67", "+38 (050) 987-65-43"],
+      details: ["+380 (93) 867 16 78", "+380 (68) 628 29 73"],
       description: "Пн-Пт: 9:00 - 18:00"
     },
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email",
-      details: ["info@vacuumpack.ua", "sales@vacuumpack.ua"],
+      details: ["apontchyk@gmail.com"],
       description: "Відповідаємо протягом 2 годин"
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Адреса",
-      details: ["м. Львів, вул. Городоцька 50"],
+      details: ["м. Рівне"],
       description: "Офіс та склад"
     },
     {
@@ -77,41 +77,37 @@ const Contact = () => {
     }
   ];
 
-  if (isSubmitted) {
-    // Не рендеримо окремий layout, залишаємо основний
-  }
-
   return (
     <div className="min-h-screen bg-white">
       <Header />
       
-      <main id="contact" className="max-w-full mx-auto px-12 py-20">
-        {/* Hero секція */}
+      <main id="contact" className="max-w-full mx-auto px-4 sm:px-6 lg:px-12 py-20">
+        {/* Hero section */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center bg-gradient-to-r from-emerald-100 to-teal-100 px-4 py-2 rounded-full border border-emerald-200 mb-6">
             <MessageSquare className="w-4 h-4 text-emerald-600 mr-2" />
             <span className="text-sm text-emerald-700 font-medium">Зв'яжіться з нами</span>
           </div>
-          <h1 className="text-5xl font-light text-zinc-900 mb-6">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-light text-zinc-900 mb-6">
             Готові допомогти вам
           </h1>
-          <p className="text-xl text-zinc-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-zinc-600 max-w-4xl mx-auto leading-relaxed">
             Маєте питання про нашу продукцію або потребуєте консультації? 
             Наша команда експертів завжди готова надати професійну допомогу.
           </p>
         </div>
 
-        {/* Контактна інформація */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+        {/* Contact information */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-20">
           {contactInfo.map((info, index) => (
-            <div key={index} className="text-center p-8 bg-gradient-to-br from-zinc-50 to-emerald-50/30 rounded-3xl border border-zinc-100 hover:shadow-lg transition-all duration-300">
+            <div key={index} className="text-center p-6 lg:p-8 bg-gradient-to-br from-zinc-50 to-emerald-50/30 rounded-3xl border border-zinc-100 hover:shadow-lg transition-all duration-300">
               <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center text-white mx-auto mb-6">
                 {info.icon}
               </div>
               <h3 className="text-xl font-semibold text-zinc-900 mb-4">{info.title}</h3>
               <div className="space-y-2 mb-3">
                 {info.details.map((detail, idx) => (
-                  <p key={idx} className="text-zinc-700 font-medium">{detail}</p>
+                  <p key={idx} className="text-zinc-700 font-medium text-sm sm:text-base">{detail}</p>
                 ))}
               </div>
               <p className="text-zinc-500 text-sm">{info.description}</p>
@@ -119,20 +115,20 @@ const Contact = () => {
           ))}
         </div>
 
-        {/* Спрощена форма зворотного зв'язку */}
+        {/* Contact form */}
         <div className="max-w-2xl mx-auto mb-20">
-          <div className="bg-gradient-to-br from-zinc-50 to-emerald-50/30 rounded-3xl p-8 border border-zinc-100 relative">
-            <h2 className="text-3xl font-light text-zinc-900 mb-2 text-center">Напишіть нам</h2>
+          <div className="bg-gradient-to-br from-zinc-50 to-emerald-50/30 rounded-3xl p-6 lg:p-8 border border-zinc-100 relative overflow-hidden">
+            <h2 className="text-2xl lg:text-3xl font-light text-zinc-900 mb-2 text-center">Напишіть нам</h2>
             <p className="text-zinc-600 text-center mb-8">Заповніть форму і ми зв'яжемося з вами найближчим часом</p>
             
-            {/* Повідомлення про успіх */}
+            {/* Success message */}
             {isSubmitted && (
               <div className="absolute inset-0 bg-gradient-to-br from-zinc-50 to-emerald-50/30 rounded-3xl flex items-center justify-center z-10">
                 <div className="text-center p-8">
                   <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full mx-auto mb-6 flex items-center justify-center">
                     <CheckCircle className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-light text-zinc-900 mb-4">
+                  <h3 className="text-xl lg:text-2xl font-light text-zinc-900 mb-4">
                     Дякуємо за ваше повідомлення!
                   </h3>
                   <p className="text-zinc-600 mb-4">
@@ -203,7 +199,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitted || isLoading}
-                className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white px-8 py-4 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 disabled:from-gray-400 disabled:to-gray-500 text-white px-8 py-4 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
                 {isLoading ? (
                   <>
@@ -221,15 +217,15 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* FAQ секція */}
-        <div className="text-center bg-gradient-to-br from-zinc-50 to-emerald-50/30 rounded-3xl p-16 border border-zinc-100">
-          <h2 className="text-4xl font-light text-zinc-900 mb-6">
+        {/* FAQ section */}
+        <div className="text-center bg-gradient-to-br from-zinc-50 to-emerald-50/30 rounded-3xl p-8 lg:p-16 border border-zinc-100">
+          <h2 className="text-3xl lg:text-4xl font-light text-zinc-900 mb-6">
             Часті питання
           </h2>
-          <p className="text-xl text-zinc-600 mb-10 max-w-3xl mx-auto">
+          <p className="text-lg lg:text-xl text-zinc-600 mb-10 max-w-3xl mx-auto">
             Перш ніж написати нам, ознайомтеся з відповідями на найпоширеніші питання наших клієнтів.
           </p>
-          <div className="grid md:grid-cols-2 gap-8 text-left">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 text-left">
             <div className="space-y-6">
               <div>
                 <h4 className="font-semibold text-zinc-900 mb-2">Який мінімальний обсяг замовлення?</h4>

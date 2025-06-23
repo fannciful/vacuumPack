@@ -23,9 +23,9 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-3 text-sm">Продукція</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="/catalog" className="text-zinc-400 hover:text-white transition-colors">Гладкі пакети</a></li>
-              <li><a href="/catalog" className="text-zinc-400 hover:text-white transition-colors">Рифлені пакети</a></li>
-              <li><a href="/catalog" className="text-zinc-400 hover:text-white transition-colors">Рулони</a></li>
+              <li><a href="/catalog" className="text-zinc-400 hover:text-white transition-colors">Вакуумні пакети</a></li>
+              <li><a href="/catalog" className="text-zinc-400 hover:text-white transition-colors">Термозбіжні пакети</a></li>
+              <li><a href="/catalog" className="text-zinc-400 hover:text-white transition-colors">Док-пай</a></li>
             </ul>
           </div>
           
@@ -34,15 +34,15 @@ const Footer = () => {
             <div className="space-y-2 text-sm">
               <div className="flex items-center space-x-2">
                 <Phone className="w-3 h-3 text-emerald-400" />
-                <a href="tel:+380671234567" className="text-zinc-400 hover:text-white transition-colors">
-                  +38 (067) 123-45-67
+                <a href="tel:+3806862829737" className="text-zinc-400 hover:text-white transition-colors">
+                  +380 (68) 628 29 73
                 </a>
               </div>
               
               <div className="flex items-center space-x-2">
                 <Mail className="w-3 h-3 text-emerald-400" />
-                <a href="mailto:info@vacuumpack.ua" className="text-zinc-400 hover:text-white transition-colors">
-                  info@vacuumpack.ua
+                <a href="mailto:apontchyk@gmail.com" className="text-zinc-400 hover:text-white transition-colors">
+                  apontchyk@gmail.com"
                 </a>
               </div>
             </div>
