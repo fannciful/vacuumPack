@@ -40,7 +40,7 @@ const Hero = () => {
             <div className="text-sm text-zinc-500 font-medium">Продуктів</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-light text-zinc-900 mb-2">7</div>
+            <div className="text-3xl font-light text-zinc-900 mb-2">15</div>
             <div className="text-sm text-zinc-500 font-medium">Років</div>
           </div>
           <div className="text-center">
