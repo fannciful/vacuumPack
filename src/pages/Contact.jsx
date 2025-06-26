@@ -275,17 +275,13 @@ const Contact = () => {
               </div>
               <div>
                 <h4 className="font-semibold text-zinc-900 mb-2">Чи надаєте ви знижки оптовим покупцям?</h4>
-                <p className="text-zinc-600">Так, діє гнучка система знижок від 5% до 25% залежно від обсягу.</p>
+                <p className="text-zinc-600">Так, діє гнучка система знижок для постійних клієнтів.</p>
               </div>
             </div>
             <div className="space-y-6">
               <div>
                 <h4 className="font-semibold text-zinc-900 mb-2">Скільки часу займає доставка?</h4>
-                <p className="text-zinc-600">По Рівному - наступний день, по Україні - 1-3 робочі дні.</p>
-              </div>
-              <div>
-                <h4 className="font-semibold text-zinc-900 mb-2">Чи можна замовити пакети з логотипом?</h4>
-                <p className="text-zinc-600">Так, ми виготовляємо пакети з індивідуальним брендингом.</p>
+                <p className="text-zinc-600">По Рівному - 1-3 робочі дні, по Україні - 1-7 робочих днів.</p>
               </div>
             </div>
           </div>

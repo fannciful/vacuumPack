@@ -4,7 +4,7 @@ export const catalogProducts = [
     id: 601,
     name: "Вакуумний пакет",
     category: "vacuum",
-    image: "/images/new.jpg",
+    image: "/images/vacuum.png",
     description: "Надійні вакуумні пакети для збереження свіжості та захисту продуктів."
   },
   {
@@ -23,16 +23,23 @@ export const catalogProducts = [
   },
   {
     id: 604,
-    name: "Гофрований чорний пакет",
+    name: "Пакет з чорною підкладкою",
     category: "corrugated",
     image: "/images/chornaya.jpg",
-    description: "Гофровані пакети з чорною підкладкою для стильного вигляду."
+    description: "Пакети з чорною підкладкою для стильного вигляду."
   },
   {
     id: 605,
-    name: "Гофрований золотий пакет",
+    name: "Пакет з золотою підкладкою",
     category: "corrugated",
     image: "/images/zolota.jpg",
-    description: "Гофровані пакети з золотою підкладкою для преміум презентації."
+    description: "Пакети з золотою підкладкою для преміум презентації."
+  },
+  {
+    id: 606,
+    name: "Гофрований пакет",
+    category: "corrugated",
+    image: "/images/new.jpg",
+    description: "Гофровані пакети різного розміру для преміум презентації."
   },
 ];
