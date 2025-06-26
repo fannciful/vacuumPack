@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { 
@@ -9,7 +10,8 @@ import {
   Send, 
   MessageSquare, 
   User, 
-  CheckCircle
+  CheckCircle,
+  AlertCircle
 } from 'lucide-react';
 
 const Contact = () => {
@@ -20,25 +22,52 @@ const Contact = () => {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  // EmailJS конфігурація
+  const EMAILJS_CONFIG = {
+    serviceID: 'service_m0g6op9', 
+    templateID: 'template_z6ynleg', 
+    publicKey: 'Z9_10jFrVe1gBOa_J' 
+  };
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+    if (error) setError('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setError('');
     
-    // Form submission simulation
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        time: new Date().toLocaleString('uk-UA', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        })
+      };
+      await emailjs.send(
+        EMAILJS_CONFIG.serviceID,
+        EMAILJS_CONFIG.templateID,
+        templateParams,
+        EMAILJS_CONFIG.publicKey
+      );
+
+      console.log('Email sent successfully');
       setIsLoading(false);
       setIsSubmitted(true);
       
-      // Reset form and message after 3 seconds
       setTimeout(() => {
         setIsSubmitted(false);
         setFormData({
@@ -46,8 +75,13 @@ const Contact = () => {
           email: '',
           message: ''
         });
-      }, 3000);
-    }, 1000);
+      }, 4000);
+
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      setIsLoading(false);
+      setError('Помилка відправки повідомлення. Спробуйте ще раз або зв\'яжіться з нами по телефону.');
+    }
   };
 
   const contactInfo = [
@@ -120,6 +154,14 @@ const Contact = () => {
           <div className="bg-gradient-to-br from-zinc-50 to-emerald-50/30 rounded-3xl p-6 lg:p-8 border border-zinc-100 relative overflow-hidden">
             <h2 className="text-2xl lg:text-3xl font-light text-zinc-900 mb-2 text-center">Напишіть нам</h2>
             <p className="text-zinc-600 text-center mb-8">Заповніть форму і ми зв'яжемося з вами найближчим часом</p>
+            
+            {/* Error message */}
+            {error && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start space-x-3">
+                <AlertCircle className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
+                <p className="text-red-700 text-sm">{error}</p>
+              </div>
+            )}
             
             {/* Success message */}
             {isSubmitted && (
@@ -217,7 +259,7 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* FAQ section */}
+        {/* FAQ section - без змін */}
         <div className="text-center bg-gradient-to-br from-zinc-50 to-emerald-50/30 rounded-3xl p-8 lg:p-16 border border-zinc-100">
           <h2 className="text-3xl lg:text-4xl font-light text-zinc-900 mb-6">
             Часті питання
@@ -239,7 +281,7 @@ const Contact = () => {
             <div className="space-y-6">
               <div>
                 <h4 className="font-semibold text-zinc-900 mb-2">Скільки часу займає доставка?</h4>
-                <p className="text-zinc-600">По Львову - наступний день, по Україні - 1-3 робочі дні.</p>
+                <p className="text-zinc-600">По Рівному - наступний день, по Україні - 1-3 робочі дні.</p>
               </div>
               <div>
                 <h4 className="font-semibold text-zinc-900 mb-2">Чи можна замовити пакети з логотипом?</h4>
